@@ -16,6 +16,10 @@ a, a:hover {
     color: inherit;
 }
 
+a[href] {
+    border-bottom: 1px dashed;
+}
+
 .input, .button, .select {
     appearance: none;
     font-size: 1rem;
@@ -542,12 +546,26 @@ nav li {
     }
 
     &__illustration {
-        height: 237px;
-        background-image: url('#{$prefix}/images/howitworks-desktop.png');
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-        margin-bottom: 40px;
+        margin: 20px 0;
+
+        &__overview, &__private_network, &__internals {
+            height: 500px;
+        }
+
+        &__overview {
+            background-image: url('#{$prefix}/images/howitworks-overview.webp');
+        }
+
+        &__private_network {
+            background-image: url('#{$prefix}/images/howitworks-private-network.webp');
+        }
+
+        &__internals {
+            background-image: url('#{$prefix}/images/howitworks-internals.webp');
+        }
     }
 
     &__steps {
@@ -732,6 +750,62 @@ nav li {
     }
 }
 
+@media (max-width: 1200px) {
+    .howitworks {
+        &__illustration {
+            &__overview, &__private_network, &__internals {
+                height: 400px;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .hero__feature {
+        width: 100%;
+        max-width: initial;
+        height: inherit;
+    }
+
+    .pricing-range__credentials {
+        flex-direction: column;
+
+        & input {
+            margin-bottom: 24px;
+
+            &.input, &.button {
+                width: 100%
+            }
+        }
+    }
+
+    .features {
+        padding-bottom: 0;
+    }
+
+    .browsers {
+        letter-spacing: 60px;
+    }
+
+    .howitworks {
+        &__illustration {
+            &__overview, &__private_network, &__internals {
+                height: 300px;
+            }
+        }
+    }
+}
+
+@media (max-width: 760px) {
+    .howitworks {
+        &__illustration {
+            &__overview, &__private_network, &__internals {
+                height: 200px;
+            }
+        }
+    }
+}
+
 @media (max-width: 576px) {
     body {
         background-image: none;
@@ -824,39 +898,6 @@ nav li {
     .articles__video iframe {
         height: 200px;
     }
-}
 
-@media (max-width: 992px) {
-    .hero__feature {
-        width: 100%;
-        max-width: initial;
-        height: inherit;
-    }
 
-    .pricing-range__credentials {
-        flex-direction: column;
-
-        & input {
-            margin-bottom: 24px;
-
-            &.input, &.button {
-                width: 100%
-            }
-        }
-    }
-
-    .features {
-        padding-bottom: 0;
-    }
-
-    .browsers {
-        letter-spacing: 60px;
-    }
-
-    .howitworks {
-        &__illustration {
-            background-image: url('#{$prefix}/images/howitworks-mobile.png');
-            height: 437px;
-        }
-    }
 }
