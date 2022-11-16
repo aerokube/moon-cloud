@@ -209,6 +209,10 @@ nav li {
 .hero {
     margin-top: 25px;
 
+    a {
+        border-bottom: none;
+    }
+
     &__heading-title {
         margin-bottom: 10px;
     }
@@ -555,6 +559,10 @@ nav li {
             height: 500px;
         }
 
+        &__autoscaling {
+            height: 550px;
+        }
+
         &__overview {
             background-image: url('#{$prefix}/images/howitworks-overview.webp');
         }
@@ -565,6 +573,10 @@ nav li {
 
         &__internals {
             background-image: url('#{$prefix}/images/howitworks-internals.webp');
+        }
+
+        &__autoscaling {
+            background-image: url('#{$prefix}/images/howitworks-autoscaling.webp');
         }
     }
 
@@ -583,6 +595,7 @@ nav li {
         color: rgba(10, 34, 94, 1);
         font-size: 18px;
         margin-bottom: 16px;
+        text-align: justify;
 
         &::before {
             position: absolute;
@@ -605,6 +618,14 @@ nav li {
 
 .pricing {
     margin-top: 40px;
+
+    &__after {
+        margin-top: 20px;
+    }
+
+    p {
+        text-align: justify;
+    }
 
     &__title {
         margin-bottom: 24px;
@@ -699,7 +720,7 @@ nav li {
         margin-left: 20px;
     }
 
-    &__price-label-currency {
+    &__price-label-currency, &__count-label-tests {
         vertical-align: middle;
     }
 
@@ -756,6 +777,11 @@ nav li {
             &__overview, &__private_network, &__internals {
                 height: 400px;
             }
+
+            &__autoscaling {
+                height: 450px;
+            }
+
         }
     }
 }
@@ -792,6 +818,11 @@ nav li {
             &__overview, &__private_network, &__internals {
                 height: 300px;
             }
+
+            &__autoscaling {
+                height: 350px;
+            }
+
         }
     }
 }
@@ -802,6 +833,11 @@ nav li {
             &__overview, &__private_network, &__internals {
                 height: 200px;
             }
+
+            &__autoscaling {
+                height: 250px;
+            }
+
         }
     }
 }

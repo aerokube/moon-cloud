@@ -7,32 +7,39 @@
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2 pricing__definition">
             <p>
-                Because of pay as you go model Moon Cloud pricing model differs from traditional cloud platforms.
-                At the end of each month you pay <strong>regular cloud platform bill plus a fixed commission of 25% for cluster maintenance</strong>.
-                Below you can get an idea of approximate Moon Cloud pricing depending on maximum number of parallel browsers and weekly usage:
+                Moon Cloud pricing model differs from traditional browser automation platforms.
+                There is no limit of how many browsers you can run in parallel and no limit of browser automation minutes.
+                At the end of each month you pay <strong>regular cloud platform bill plus a fixed commission of 25% for cluster maintenance</strong>. Cloud platform bill consists of two main parts: <strong>permanent part</strong> and <strong>usage-based part</strong>. <strong>Permanent part</strong> is what you pay anyway, even if no browsers are being used. This part includes cost of Moon Cloud components that are running all the time: Kubernetes computing resources for Moon software and monitoring, NAT instance and network load balancer. <strong>Usage-based part</strong> is the cost of computing resources for browsers that you run.
+                Below you can get an idea of approximate monthly Moon Cloud cost:
             </p>
         </div>
         <div class="col-12 col-md-8 offset-md-2">
             <form id="range" class="pricing-range">
-                <div class="pricing-range__range-container">
-                </div>
+                <div class="pricing-range__range-container"></div>
                 <div class="pricing-range__config">
                     <div class="pricing-range__selects"></div>
                     <label class="d-flex justify-content-between align-items-center d-sm-inline pricing-range__duration-label">
-                        <span class="pricing-range__duration-label-text">Cloud platform: </span>
-                        <span class="select-wrapper">
-                            <select name="duration" class="select pricing-range__duration"></select>
+                        <span class="pricing-range__duration-label-text">Test runs per day:</span>
+                        <span class="pricing-range__odometer-container">
+                            <span class="pricing-range__count-label-tests">✔</span><span id="count-odometer"></span>
                         </span>
                     </label>
-                    <label class="d-flex justify-content-between align-items-center pricing-range__price-label">
-                        <span class="pricing-range__price-label-text">Your price:</span>
+                    <label class="d-flex justify-content-between align-items-center d-sm-inline pricing-range__price-label">
+                        <span class="pricing-range__price-label-text">Monthly cost:</span>
                         <span class="pricing-range__odometer-container">
                             <span class="pricing-range__price-label-currency">$</span><span id="price-odometer"></span>
                         </span>
-                        <input id="price-input" type="hidden" name="price" value="0">
                     </label>
                 </div>
+
+                <div class="pricing-range__config">
+                </div>
             </form>
+        </div>
+        <div class="col-12 col-md-8 offset-md-2 pricing__after">
+            <p>
+                In the calculator above you can change 3 parameters: number of browsers running in parallel, how much time you expect to run all your tests every day and how long an average test runs. The first two parameters determine monthly infrastructure cost. In this calculator we assume that tests are being run 5 days per week (21 days per month) in the US East region. In other cloud regions final cluster cost can change because the same computing resources have different cost there. Note that monthly cost is not zero even if you don't run your tests at all (automation hours per day is 0). This is because of the permanent part of the infrastructure described above. Average test duration allows to estimate possible number of tests you can run per day with selected number of parallel browsers and daily usage duration. If you are not sure about your possible usage - request a free trial using the form at the top of the page or contact us: <strong>moon-cloud [at] aerokube.com</strong>.
+            </p>
         </div>
     </div>
 </div>
