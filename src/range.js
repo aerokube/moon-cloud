@@ -2,51 +2,30 @@ const defaultParams = {
   blockName: "pricing-range",
   ranges: [
     {
-      name: "sessions",
-      title: "Parallel Sessions",
-      values: [10, 20, 50, 100, 500, 1000],
-      value: 50
+      name: "limit",
+      title: "Parallel browsers",
+      values: [10, 20, 50, 100, 500],
+      value: 20
     },
     {
       name: "hours",
-      title: "Hours per week",
-      values: [2, 4, 8, 16, 24, 40],
-      value: 8
-    }
-  ],
-  // price coefficient for platform
-  platforms: [
+      title: "Automation hours per day",
+      values: [0, 1, 2, 4, 8, 24],
+      value: 0
+    },
     {
-      title: "Amazon Web Services",
+      name: "duration",
+      title: "Average test duration in minutes",
+      values: [1, 3, 5, 10, 20],
       value: 1
-    },
-    {
-      title: "Google Cloud",
-      value: 2
-    },
-    {
-      title: "Microsoft Azure",
-      value: 3
-    },
-  ],
-  defaultPlatform: 1,
-  price: 5
+    }
+  ]
 };
 
 const price = {
   maintenanceCommission: 1.25,
-  platforms: {
-    permanent: {
-      1: 170, // AWS
-      2: 186, // Google Cloud
-      3: 163 // M$ Azure
-    },
-    variable: {
-      1: 0.192,
-      2: 0.134,
-      3: 0.166
-    },
-  }
+  permanent: 170, // per month
+  variable: 0.192 // per hour
 };
 
 class Range {
@@ -60,31 +39,35 @@ class Range {
     this.selector = selector;
     this.rangeContainer = selector.querySelector(".pricing-range__range-container");
     this.selectContainer = selector.querySelector(".pricing-range__selects");
-    this.platforms = this.params.platforms;
-    this.platform = this.params.defaultPlatform;
-    this.price = this.params.price;
     this.value = null;
+    this.count = null;
     this.ranges = [];
 
     this.createRanges();
-    this.createValue();
-    this.createDuration();
+    this.createOdometers();
 
     this.setValue();
   }
 
   setValue() {
-    const weeklyUsage = this.ranges.map((r) => r.value).reduce((acc, r) => acc * r); // Hours * parallel sessions
-    const monthlyUsage = 4 * weeklyUsage;
-    const vmMonthlyUsage = monthlyUsage / 5; // 1 VM == 5 browsers
-    const permanentPayment = price.platforms.permanent[this.platform]; // Load balancer + nodes with Moon
-    const usageCost = price.platforms.variable[this.platform]; // Browser nodes with auto-scaling
-    this.value = price.maintenanceCommission * (permanentPayment + usageCost * vmMonthlyUsage);
+    const dailyUsage = this.ranges
+      .filter((r) => r.name === "limit" || r.name === "hours")
+      .map((r) => r.value)
+      .reduce((acc, r) => acc * r); // Hours * parallel sessions
+    const monthlyUsage = 21 * dailyUsage;
+    const vmMonthlyUsage = monthlyUsage / 4; // 1 VM == 4 browsers
+    this.value = price.maintenanceCommission * (price.permanent + price.variable * vmMonthlyUsage);
     if (this.odometer) {
       this.odometer.update(this.value);
     }
 
-    this.priceInput.value = this.value;
+    const avgTestDuration = this.ranges
+      .filter((r) => r.name === "duration")
+      .map((r) => r.value);
+    this.count = dailyUsage * 60 / avgTestDuration;
+    if (this.countOdometer) {
+      this.countOdometer.update(this.count);
+    }
   }
 
   createRanges() {
@@ -94,10 +77,6 @@ class Range {
       this.createRangeEventListener(range);
       this.setRange(range);
     });
-  }
-
-  setRanges() {
-    this.ranges.forEach(this.setRange, this);
   }
 
   createRange(range) {
@@ -134,6 +113,7 @@ class Range {
       container,
       select,
       items,
+      name: range.name,
       value: range.value,
       title: range.title
     };
@@ -182,40 +162,8 @@ class Range {
     }
   }
 
-  createDuration() {
-    this.platformContainer = this.selector.querySelector(".pricing-range__duration");
-
-    this.platforms.forEach((month) => {
-      const element = document.createElement("option");
-      element.setAttribute("value", month.value);
-      element.innerText = month.title;
-      this.platformContainer.appendChild(element);
-    });
-
-    this.platformContainer.addEventListener("change", (event) => {
-      this.platform = event.target.value;
-
-      this.setDuration();
-      this.setValue();
-    });
-
-    this.setDuration();
-  }
-
-  setDuration() {
-    const options = this.platformContainer.options;
-
-    for (let i = 0; i < options.length; i++) {
-      if (options[i].value !== this.platform) {
-        options[i].removeAttribute("selected");
-      } else {
-        options[i].setAttribute("selected", "");
-      }
-    }
-  }
-
   setRange(range, value) {
-    if (value) {
+    if (value || value === 0) {
       range.value = value;
     }
 
@@ -257,16 +205,22 @@ class Range {
     };
   }
 
-  createValue() {
-    this.valueContainer = document.getElementById("price-odometer");
-    this.priceInput = document.getElementById("price-input");
-
+  createOdometers() {
+    const priceValueContainer = document.getElementById("price-odometer");
     this.odometer = new window.Odometer({
-      el: this.valueContainer,
+      el: priceValueContainer,
       value: this.value,
       numberLength: 5,
       theme: "minimal",
-      format: "(,ddddd)"
+      format: "(ddddd)"
+    });
+    const countValueContainer = document.getElementById("count-odometer");
+    this.countOdometer = new window.Odometer({
+      el: countValueContainer,
+      value: this.count,
+      numberLength: 6,
+      theme: "minimal",
+      format: "(dddddd)"
     });
   }
 }
