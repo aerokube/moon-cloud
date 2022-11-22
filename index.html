@@ -38,7 +38,7 @@
   
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
-    <link href="/moon-cloud/main.3d1ec.css" rel="stylesheet">
+    <link href="/moon-cloud/main.9a357.css" rel="stylesheet">
   
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&amp;display=swap" rel="stylesheet">
@@ -92,13 +92,11 @@
                 
                 <li><a href="https://blog.aerokube.com">Blog</a></li>
                 
-                <li><a href="https://github.com/aerokube/moon">Github</a></li>
-                
                 <li><a href="https://t.me/aerokube_moon">Telegram</a></li>
                 
                 <li><a href="https://twitter.com/aerokube">Twitter</a></li>
                 
-                <li><a href="https://www.youtube.com/channel/UC9HvE3FNfTvftzpvXi9c69g">Youtube</a></li>
+                <li><a href="https://www.youtube.com/@aerokube">Youtube</a></li>
                 
                 <li><a href="mailto:support@aerokube.com">Mail us</a></li>
                 
@@ -113,7 +111,7 @@
     <div class="header__menu-wrapper">
         <ul class="header__menu-container">
             
-            <li><a href="/moon/#pricing">Pricing</a></li>
+            <li><a href="/moon-cloud/#pricing">Pricing</a></li>
             
             <li><a href="/moon/#articles">Documentation</a></li>
             
@@ -178,9 +176,9 @@
     <div class="row">
         
         <div class="col-12 col-md-3 mb-4 mb-md-0 features__feature">
-            <img src="images/features/cluster.svg" alt="Runs in your cloud">
-            <p class="features__feature-title">Runs in your cloud</p>
-            <p class="features__feature-description">Choose platform <br/>and region near you</p>
+            <img src="images/features/cluster.svg" alt="Runs in public cloud">
+            <p class="features__feature-title">Runs in public cloud</p>
+            <p class="features__feature-description">We use cloud platform <br/>and region near you</p>
         </div>
         
         <div class="col-12 col-md-3 mb-4 mb-md-0 features__feature">
@@ -196,8 +194,8 @@
         </div>
         
         <div class="col-12 col-md-3 mb-4 mb-md-0 features__feature">
-            <img src="images/features/pricing.svg" alt="Pay as you go">
-            <p class="features__feature-title">Pay as you go</p>
+            <img src="images/features/pricing.svg" alt="Pay for real usage">
+            <p class="features__feature-title">Pay for real usage</p>
             <p class="features__feature-description">Monthly cost depends <br/>on your real usage</p>
         </div>
         
@@ -271,17 +269,42 @@
             <div class="col-12 text-center">
                 <h2 class="pricing__title" id="howitworks">How it works</h2>
             </div>
-            <div class="col-10 offset-1">
-                <div class="howitworks__illustration"></div>
-            </div>
         </div>
         <div class="row">
             <ul class="col-10 offset-1 howitworks__steps">
-                <li class="howitworks__step">You get a completely dedicated cluster in one of supported cloud platforms: <a href="https://aws.amazon.com/" title="Amazon Web Services" target="_blank">AWS</a>, <a href="https://cloud.google.com/" title="Google Cloud" target="_blank">Google Cloud</a> or <a href="https://azure.microsoft.com/" title="Microsoft Azure" target="_blank">Microsoft Azure</a>.</li>
-                <li class="howitworks__step">We always run this cluster in the geographic region near you, so network connectivity is lightning fast.</li>
-                <li class="howitworks__step">Running in <a href="https://kubernetes.io/" title="Kubernetes" target="_blank">Kubernetes</a> Moon Cloud has autoscaling feature, i.e. shrinks and grows depending on how many browsers you need. Because of that you only pay for computing resources you really consume.</li>
-                <li class="howitworks__step">You can use all popular browser automation frameworks: <a href="https://selenium.dev/" title="Selenium" target="_blank">Selenium</a>, <a href="https://playwright.dev/" title="Playwright" target="_blank">Playwright</a>, <a href="https://pptr.dev/" title="Puppeteer" target="_blank">Puppeteer</a> and <a href="https://cypress.io/" title="Cypress" target="_blank">Cypress</a> simultaneously.</li>
-                <li class="howitworks__step">Moon Cloud relies on cloud platform networking features and can access your workstation, corporate network server or another cloud project.</li>
+                <li class="howitworks__step">
+                    <strong>Dedicated infrastructure.</strong>
+                    You get a completely dedicated browser automation infrastructure in a public cloud platform.
+                    You can use all popular browser automation frameworks: <a href="https://selenium.dev/" title="Selenium" target="_blank">Selenium</a>, <a href="https://playwright.dev/" title="Playwright" target="_blank">Playwright</a>, <a href="https://pptr.dev/" title="Puppeteer" target="_blank">Puppeteer</a> and <a href="https://cypress.io/" title="Cypress" target="_blank">Cypress</a> simultaneously.
+                    We always run this infrastructure in the geographic region near you, so network connectivity is lightning fast.
+                    <div class="howitworks__illustration howitworks__illustration__overview"></div>
+                    <div><small>(1) - commands to launch browsers are being sent from your infrastructure to Moon Cloud.</small></div>
+                    <div><small>(2) - Moon Cloud automatically launches requested number of desired browser versions.</small></div>
+                    <div><small>(3) - launched browsers are accessing your applications using public endpoints or private connectivity features described below.</small></div>
+                </li>
+                <li class="howitworks__step">
+                    <strong>Cost-efficient.</strong>
+                    Moon Cloud grows and shrinks depending on how many browsers you need. This allows to dramatically decrease computing resources consumption. You only pay for computing resources you really consume.
+                    <div class="howitworks__illustration howitworks__illustration__autoscaling"></div>
+                </li>
+                <li class="howitworks__step">
+                    <strong>Transparent billing.</strong>
+                    At the beginning of each month you pay cloud platform bill for the previous month plus our <strong>commission of 25% of the cloud bill</strong> for cluster maintenance. We give access to the billing console of the cloud project, so controlling your expenses is straightforward. Additionally, we can configure billing alerts that prevent you from accidentally spending too much money.
+                </li>
+                <li class="howitworks__step">
+                    <strong>Free support.</strong>
+                    Moon Cloud comes with a free dedicated support channel in <a href="https://telegram.org/" title="Telegram" target="_blank">Telegram</a> or <a href="https://slack.com/" title="Slack" target="_blank">Slack</a> messenger.</li>
+                <li class="howitworks__step">
+                    <strong>Reliable architecture.</strong>
+                    For every customer we create a <strong>dedicated cloud project</strong>. Moon Cloud is based on a generally available <strong><a href="https://aerokube.com/moon/" title="Moon" target="_blank">Moon</a></strong> release running in <strong><a href="https://kubernetes.io/" title="Kubernetes" target="_blank">Kubernetes</a></strong> cluster.
+                    <div class="howitworks__illustration howitworks__illustration__internals"></div>
+                    Our clusters are always running in two different datacenters (availability zones), so they are <strong>highly reliable</strong>. To have a single domain name for accessing Moon Cloud, we are using <strong>highly-available</strong> load balancer provided by the cloud platform. All network traffic goes through a dedicated NAT with the permanent IP address. Connection to the cluster is <strong>encrypted</strong> and <strong>password-protected</strong>.</li>
+                <li class="howitworks__step">
+                    <strong>Flexible networking.</strong>
+                    Moon Cloud relies on cloud platform networking features and can access your workstation, corporate network server or another cloud project.
+                    <div class="howitworks__illustration howitworks__illustration__private_network"></div>
+                    Upon your request we can configure Moon Cloud to be <strong>completely isolated</strong> from the Internet and configure private network connectivity to your infrastructure. Depending on your infrastructure we can use technologies like <strong>VPC peering</strong>, <strong>private network endpoints</strong>, <strong>VPN</strong>, <strong>transit gateways</strong> an so on.
+                </li>
             </ul>
         </div>
     </div>
@@ -296,32 +319,39 @@
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2 pricing__definition">
             <p>
-                Because of pay as you go model Moon Cloud pricing model differs from traditional cloud platforms.
-                At the end of each month you pay <strong>regular cloud platform bill plus a fixed commission of 25% for cluster maintenance</strong>.
-                Below you can get an idea of approximate Moon Cloud pricing depending on maximum number of parallel browsers and weekly usage:
+                Moon Cloud pricing model differs from traditional browser automation platforms.
+                There is no limit of how many browsers you can run in parallel and no limit of browser automation minutes.
+                At the end of each month you pay <strong>regular cloud platform bill plus a fixed commission of 25% for cluster maintenance</strong>. Cloud platform bill consists of two main parts: <strong>permanent part</strong> and <strong>usage-based part</strong>. <strong>Permanent part</strong> is what you pay anyway, even if no browsers are being used. This part includes cost of Moon Cloud components that are running all the time: Kubernetes computing resources for Moon software and monitoring, NAT instance and network load balancer. <strong>Usage-based part</strong> is the cost of computing resources for browsers that you run.
+                Below you can get an idea of approximate monthly Moon Cloud cost:
             </p>
         </div>
         <div class="col-12 col-md-8 offset-md-2">
             <form id="range" class="pricing-range">
-                <div class="pricing-range__range-container">
-                </div>
+                <div class="pricing-range__range-container"></div>
                 <div class="pricing-range__config">
                     <div class="pricing-range__selects"></div>
-                    <label class="d-flex justify-content-between align-items-center d-sm-inline pricing-range__duration-label">
-                        <span class="pricing-range__duration-label-text">Cloud platform: </span>
-                        <span class="select-wrapper">
-                            <select name="duration" class="select pricing-range__duration"></select>
-                        </span>
-                    </label>
-                    <label class="d-flex justify-content-between align-items-center pricing-range__price-label">
-                        <span class="pricing-range__price-label-text">Your price:</span>
+                    <label class="d-flex justify-content-between align-items-center d-sm-inline pricing-range__price-label">
+                        <span class="pricing-range__price-label-text">Monthly cost:</span>
                         <span class="pricing-range__odometer-container">
                             <span class="pricing-range__price-label-currency">$</span><span id="price-odometer"></span>
                         </span>
-                        <input id="price-input" type="hidden" name="price" value="0">
+                    </label>
+                    <label class="d-flex justify-content-between align-items-center d-sm-inline pricing-range__duration-label">
+                        <span class="pricing-range__duration-label-text">Test runs per day:</span>
+                        <span class="pricing-range__odometer-container">
+                            <span class="pricing-range__count-label-tests">✔</span><span id="count-odometer"></span>
+                        </span>
                     </label>
                 </div>
+
+                <div class="pricing-range__config">
+                </div>
             </form>
+        </div>
+        <div class="col-12 col-md-8 offset-md-2 pricing__after">
+            <p>
+                In the calculator above you can change 3 parameters: number of browsers running in parallel, how much time you expect to run all your tests every day and how long an average test runs. The first two parameters determine monthly infrastructure cost. In this calculator we assume that tests are being run 5 days per week (21 days per month) in the US East region. In other cloud regions final cluster cost can change because the same computing resources have different cost there. Note that monthly cost is not zero even if you don't run your tests at all (automation hours per day is 0). This is because of the permanent part of the infrastructure described above. Average test duration allows to estimate possible number of tests you can run per day with selected number of parallel browsers and daily usage duration. If you are not sure about your possible usage - request a free trial using the form at the top of the page or contact us: <strong>moon-cloud [at] aerokube.com</strong>.
+            </p>
         </div>
     </div>
 </div>
@@ -349,13 +379,11 @@
                     
                     <li><a href="https://blog.aerokube.com">Blog</a></li>
                     
-                    <li><a href="https://github.com/aerokube/moon">Github</a></li>
-                    
                     <li><a href="https://t.me/aerokube_moon">Telegram</a></li>
                     
                     <li><a href="https://twitter.com/aerokube">Twitter</a></li>
                     
-                    <li><a href="https://www.youtube.com/channel/UC9HvE3FNfTvftzpvXi9c69g">Youtube</a></li>
+                    <li><a href="https://www.youtube.com/@aerokube">Youtube</a></li>
                     
                     <li><a href="mailto:support@aerokube.com">Mail us</a></li>
                     
@@ -366,7 +394,7 @@
             <div class="col footer__separator"></div>
         </div>
         <div class="row footer__bottom align-items-center">
-            <div class="col-12 col-md-auto footer__copyright">© 2021 Aerokube Software</div>
+            <div class="col-12 col-md-auto footer__copyright">© 2022 Aerokube Software</div>
             <div class="col-12 col-md footer__terms">
                 
                 
@@ -378,7 +406,7 @@
 
   
   
-    <script src="/moon-cloud/main.3d1ec.js"></script>
+    <script src="/moon-cloud/main.9a357.js"></script>
   
 </body>
 
