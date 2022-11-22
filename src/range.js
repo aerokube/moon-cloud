@@ -24,8 +24,8 @@ const defaultParams = {
 
 const price = {
   maintenanceCommission: 1.25,
-  permanent: 170, // per month
-  variable: 0.192 // per hour
+  permanent: 291, // per month
+  variable: 0.39 // per hour
 };
 
 class Range {
